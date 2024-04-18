@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>成绩案例</title>
+    <link
+      href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+        table {
+            text-align: center;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <table class="table table-striped">
+        <tr>
+          <th>编号</th>
+          <th>科目</th>
+          <th>成绩</th>
+          <th>操作</th>
+        </tr>
+        <tr v-for="item, index in list" :key="item.id">
+          <td :class="">{{ item.id }}</td>
+          <td>{{ item.subject }}</td>
+          <td>{{ item.score }}</td>
+          <td><button>删除</button></td>
+        </tr>
+        <tr>
+            <td colspan="2">总分：</td>
+            <td colspan="2">平均分：</td>
+        </tr>
+      </table>
+      <div class="control-box">
+        <label for="subject">科目：
+        <input type="text" name="subject" v-model="subject" />
+        <label for="score">分数：
+        <input type="text" name="score" v-model="score" />
+        </label>
+        <button class="btn btn-primary">添加</button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/js/bootstrap.min.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          list: [
+            { id: 1, subject: "语文", score: 20 },
+            { id: 7, subject: "数学", score: 99 },
+            { id: 12, subject: "英语", score: 70 },
+          ],
+          subject: "",
+          score: "",
+        },
+        methods: {},
+        computed: {},
+      });
+    </script>
+  </body>
+</html>
