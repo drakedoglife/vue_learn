@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>计算属性完整写法</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>
+        姓：<input type="text" v-model="firstname" /> + 名：<input
+          type="text"
+          v-model="lastname"
+        />
+        = <span>{{ fullName }}</span>
+      </p>
+      <button @click="changeName">改名卡</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          firstname: "刘",
+          lastname: "备",
+        },
+        methods: {
+          changeName() {
+            this.fullName = "王五";
+          },
+        },
+        computed: {
+          fullName: {
+            get() {
+              return this.firstname + this.lastname;
+            },
+            set(value) {
+              this.firstname = value.slice(0, 1);
+              this.lastname = value.slice(1);
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
