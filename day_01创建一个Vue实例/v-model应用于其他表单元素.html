@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-model应用于其他表单元素</title>
+  </head>
+  <body>
+    <div id="app">
+      <h3>苒苒物华休</h3>
+      <label for="name">姓名:</label>
+      <input type="text" name="name" v-model="username" />
+      <br />
+      <label for="isSingle">是否单身：</label>
+      <input type="checkbox" name="isSingle" v-model="isSingle"/>
+      <br />
+      <label for="gender">性别：</label>
+      <input type="radio" name="gender" value="1" v-model="gender"/>男
+      <input type="radio" name="gender" value="2" v-model="gender"/>女
+      <br />
+      <label for="city">所在城市：</label>
+      <select name="city" id="city" v-model="city">
+        <option value="101">北京</option>
+        <option value="102">上海</option>
+        <option value="103">广州</option>
+        <option value="104">深圳</option>
+      </select>
+      <br />
+      <label for="detail">自我描述：</label>
+      <input type="textarea" name="detail" v-model="textcontent"/>
+      <br />
+      <button type="button">立即注册</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          username: "",
+          isSingle: true,
+          gender: "1",
+          city: "102",
+          textcontent: ""
+        },
+      });
+    </script>
+  </body>
+</html>
