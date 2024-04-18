@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>计算属性</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+
+      table {
+        table-layout: auto;
+        width: 300px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <table>
+        <tr v-for="item, index in list">
+          <td>{{ item.name }}</td>
+          <td>{{ item.num }}</td>
+        </tr>
+      </table>
+      <p>计算总数：{{ sum }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          list: [
+            { id: 1, name: "篮球", num: 1 },
+            { id: 2, name: "玩具", num: 2 },
+            { id: 3, name: "铅笔", num: 5 },
+          ],
+        },
+        computed: {
+          sum() {
+            //数组求和
+            let total = this.list.reduce((sum, item) => sum + item.num, 0)
+            return total;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
